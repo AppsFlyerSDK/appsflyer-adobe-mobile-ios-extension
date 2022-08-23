@@ -1,4 +1,4 @@
-<img src="gitresources/AF Logo_primary_logo.png"  width="400" > 
+<img src="gitresources/AF_Logo_primary_logo.png"  width="400" > 
 
 # appsflyer-adobe-mobile-ios-extension
 
