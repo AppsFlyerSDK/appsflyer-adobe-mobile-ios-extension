@@ -1,4 +1,4 @@
-<img src="https://www.appsflyer.com/wp-content/uploads/2016/11/logo-1.svg"  width="450">
+<img src="gitresources/AF\ Logo_primary_logo.png"  width="400" > 
 
 # appsflyer-adobe-mobile-ios-extension
 
@@ -21,14 +21,14 @@
 
 ### <a id="plugin-build-for"> This plugin is built for
     
-- iOS AppsFlyer SDK **v6.5.4**
+- iOS AppsFlyer SDK **v6.8.1**
 
 ## <a id="add-sdk-to-project"> 📲 Adding the SDK to your project
 
 Add the following to your app's `Podfile`:
 
 ```javascript
-	pod 'AppsFlyerAdobeExtension', '6.5.4'
+pod 'AppsFlyerAdobeExtension', '6.8.1'
 ```
 
 ## <a id="init-sdk"> 🚀 Initializing the SDK
