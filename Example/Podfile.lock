@@ -7,12 +7,12 @@ PODS:
   - ACPCore (2.3.6):
     - ACPCore/iOS (= 2.3.6)
   - ACPCore/iOS (2.3.6)
-  - AppsFlyerAdobeExtension (6.5.4):
+  - AppsFlyerAdobeExtension (6.9.1):
     - ACPCore
-    - AppsFlyerFramework (= 6.5.4)
-  - AppsFlyerFramework (6.5.4):
-    - AppsFlyerFramework/Main (= 6.5.4)
-  - AppsFlyerFramework/Main (6.5.4)
+    - AppsFlyerFramework (= 6.9.1)
+  - AppsFlyerFramework (6.9.1):
+    - AppsFlyerFramework/Main (= 6.9.1)
+  - AppsFlyerFramework/Main (6.9.1)
 
 DEPENDENCIES:
   - ACPAnalytics (= 2.1.2)
@@ -32,9 +32,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ACPAnalytics: 872c4701bd53b508602ce1e31cf5e7cee295f690
   ACPCore: 1d3a5b79f172de3d998cf63b5c1538da1dd66f33
-  AppsFlyerAdobeExtension: 307801dc15a7025f15e9dd91f7fee66741acb841
-  AppsFlyerFramework: e309a6cab366296bf891dc68b175de1e9a44f86c
+  AppsFlyerAdobeExtension: 8d2f1887843207b97d464ef30f02c737ddf19016
+  AppsFlyerFramework: dc9aa675faa8e1a2ed40fb295d3c5408ee2b972a
 
 PODFILE CHECKSUM: 1f415047c5e71b7daf25fdc88dbee7f4780801ff
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
