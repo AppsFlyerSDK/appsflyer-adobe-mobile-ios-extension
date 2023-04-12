@@ -10,6 +10,7 @@
 #import "AppsFlyerAttribution.h"
 #import <objc/message.h>
 
+#define kAppsFlyerAdobeExtensionVersion @"6.10.1"
 
 static AppsFlyerAdobeExtension *__sharedInstance = nil;
 static void (^__completionHandler)(NSDictionary*) = nil;
@@ -105,8 +106,10 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
 
 
 
-- (void)setupAppsFlyerTrackingWithAppId:(NSString*)appId appsFlyerDevKey:(NSString*)appsFlyerDevKey
-                                isDebug:(BOOL)isDebug trackAttrData:(BOOL)trackAttrData
+- (void)setupAppsFlyerTrackingWithAppId:(NSString*)appId
+                        appsFlyerDevKey:(NSString*)appsFlyerDevKey
+                                isDebug:(BOOL)isDebug
+                          trackAttrData:(BOOL)trackAttrData
                           eventSettings:(nonnull NSString *)eventSettings
                             waitForECID:(BOOL)waitForECID{
     if (appsFlyerDevKey != nil) {
@@ -159,6 +162,7 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
             
             if (![self didInit]) {
                 [self appDidBecomeActive];
+                [self setPluginVersion:kAppsFlyerAdobeExtensionVersion];
                 [AppsFlyerAttribution shared].isBridgeReady = YES;
                 [[NSNotificationCenter defaultCenter] postNotificationName:AF_BRIDGE_SET object:self];
                 [self setDidInit:YES];
@@ -169,7 +173,7 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
     }
 }
 
-- (void) appDidBecomeActive {
+- (void)appDidBecomeActive {
     [self AFLoggr: @"appDidBecomeActive"];
     if ([self didReceiveConfigurations] && self->_mayStartSDK) {
         [self AFLoggr: @"AF Start"];
@@ -177,6 +181,12 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
         [[AppsFlyerLib shared] start];
         [self setDidInit:YES];
     }
+}
+
+- (void)setPluginVersion:(NSString *)pluginVersion {
+    [[AppsFlyerLib shared] setPluginInfoWith:AFSDKPluginAdobeMobile
+                               pluginVersion:pluginVersion
+                            additionalParams:nil];
 }
 
 + (void)continueUserActivity:(NSUserActivity *)userActivity
