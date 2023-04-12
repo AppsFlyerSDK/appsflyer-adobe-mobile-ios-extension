@@ -10,7 +10,7 @@
 #import "AppsFlyerAttribution.h"
 #import <objc/message.h>
 
-#define kAppsFlyerAdobeExtensionVersion @"6.10.1"
+#define kAppsFlyerAdobeExtensionVersion @"6.10.2"
 
 static AppsFlyerAdobeExtension *__sharedInstance = nil;
 static void (^__completionHandler)(NSDictionary*) = nil;
@@ -135,6 +135,9 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
                 [AppsFlyerLib shared].appleAppID = appId;
             }
             
+            [[AppsFlyerLib shared] setPluginInfoWith:AFSDKPluginAdobeMobile
+                                       pluginVersion:kAppsFlyerAdobeExtensionVersion
+                                    additionalParams:nil];
             [AppsFlyerLib shared].appsFlyerDevKey = appsFlyerDevKey;
             [AppsFlyerLib shared].delegate = self;
             [AppsFlyerLib shared].isDebug = isDebug;
@@ -162,7 +165,6 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
             
             if (![self didInit]) {
                 [self appDidBecomeActive];
-                [self setPluginVersion:kAppsFlyerAdobeExtensionVersion];
                 [AppsFlyerAttribution shared].isBridgeReady = YES;
                 [[NSNotificationCenter defaultCenter] postNotificationName:AF_BRIDGE_SET object:self];
                 [self setDidInit:YES];
@@ -181,12 +183,6 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
         [[AppsFlyerLib shared] start];
         [self setDidInit:YES];
     }
-}
-
-- (void)setPluginVersion:(NSString *)pluginVersion {
-    [[AppsFlyerLib shared] setPluginInfoWith:AFSDKPluginAdobeMobile
-                               pluginVersion:pluginVersion
-                            additionalParams:nil];
 }
 
 + (void)continueUserActivity:(NSUserActivity *)userActivity
