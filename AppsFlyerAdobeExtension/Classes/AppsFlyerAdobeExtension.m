@@ -137,7 +137,7 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
             
             [[AppsFlyerLib shared] setPluginInfoWith:AFSDKPluginAdobeMobile
                                        pluginVersion:kAppsFlyerAdobeExtensionVersion
-                                    additionalParams:nil];
+                                    additionalParams:@{@"adobe-version":@"v1"}];
             [AppsFlyerLib shared].appsFlyerDevKey = appsFlyerDevKey;
             [AppsFlyerLib shared].delegate = self;
             [AppsFlyerLib shared].isDebug = isDebug;
