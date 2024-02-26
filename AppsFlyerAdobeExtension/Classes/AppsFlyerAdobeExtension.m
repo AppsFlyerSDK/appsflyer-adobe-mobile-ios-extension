@@ -10,7 +10,7 @@
 #import "AppsFlyerAttribution.h"
 #import <objc/message.h>
 
-#define kAppsFlyerAdobeExtensionVersion @"6.10.2"
+#define kAppsFlyerAdobeExtensionVersion @"6.13.0"
 
 static AppsFlyerAdobeExtension *__sharedInstance = nil;
 static void (^__completionHandler)(NSDictionary*) = nil;
@@ -33,7 +33,7 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
         _trackAttributionData = NO;
         _eventSettings = @"action";
         _mayStartSDK = NO;
-        
+        _manual = NO;
         
         NSError* error = nil;
         
@@ -137,7 +137,7 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
             
             [[AppsFlyerLib shared] setPluginInfoWith:AFSDKPluginAdobeMobile
                                        pluginVersion:kAppsFlyerAdobeExtensionVersion
-                                    additionalParams:nil];
+                                    additionalParams:@{@"adobe-version":@"v1"}];
             [AppsFlyerLib shared].appsFlyerDevKey = appsFlyerDevKey;
             [AppsFlyerLib shared].delegate = self;
             [AppsFlyerLib shared].isDebug = isDebug;
@@ -178,10 +178,11 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
 - (void)appDidBecomeActive {
     [self AFLoggr: @"appDidBecomeActive"];
     if ([self didReceiveConfigurations] && self->_mayStartSDK) {
-        [self AFLoggr: @"AF Start"];
         [[NSNotificationCenter defaultCenter] postNotificationName:AF_BRIDGE_SET object:self];
-        [[AppsFlyerLib shared] start];
-        [self setDidInit:YES];
+        if (!AppsFlyerAdobeExtension.shared.manual){
+            [self AFLoggr: @"AF Start"];
+            [[AppsFlyerLib shared] start];
+        }
     }
 }
 
