@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (atomic) NSString* ecid;
 @property (atomic) NSDictionary* gcd;
 @property (atomic) BOOL mayStartSDK;
+@property (atomic) BOOL manual;
 
 
 + (nullable instancetype)shared;
