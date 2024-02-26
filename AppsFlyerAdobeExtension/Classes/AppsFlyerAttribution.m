@@ -61,7 +61,6 @@
 
 - (void) receiveBridgeReadyNotification:(NSNotification *) notification
 {
-    NSLog (@"AppsFlyer Debug: handle deep link");
     if(self.url && self.sourceApplication && self.annotation){
         [[AppsFlyerLib shared] handleOpenURL:self.url sourceApplication:self.sourceApplication withAnnotation:self.annotation];
         self.url = nil;

@@ -33,7 +33,7 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
         _trackAttributionData = NO;
         _eventSettings = @"action";
         _mayStartSDK = NO;
-        
+        _manual = NO;
         
         NSError* error = nil;
         
@@ -178,10 +178,11 @@ typedef void (*bypassDidFinishLaunchingWithOption)(id, SEL, NSInteger);
 - (void)appDidBecomeActive {
     [self AFLoggr: @"appDidBecomeActive"];
     if ([self didReceiveConfigurations] && self->_mayStartSDK) {
-        [self AFLoggr: @"AF Start"];
         [[NSNotificationCenter defaultCenter] postNotificationName:AF_BRIDGE_SET object:self];
-        [[AppsFlyerLib shared] start];
-        [self setDidInit:YES];
+        if (!AppsFlyerAdobeExtension.shared.manual){
+            [self AFLoggr: @"AF Start"];
+            [[AppsFlyerLib shared] start];
+        }
     }
 }
 
