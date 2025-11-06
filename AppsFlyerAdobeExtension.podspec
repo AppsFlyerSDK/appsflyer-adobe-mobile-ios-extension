@@ -9,7 +9,7 @@ AppsFlyer iOS SDK Extension for Adobe Mobile SDK.
   s.license          = { :type => 'proprietary', :file => 'LICENSE' }
   s.author           = { 'AppsFlyer' => 'paz.lavi@appsflyer.com' }
   s.source           = { :git => 'https://github.com/AppsFlyerSDK/AppsFlyerAdobeExtension.git', :tag => s.version.to_s }
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '12.0'
   s.static_framework = true
   
   s.public_header_files = 'AppsFlyerAdobeExtension/Classes/**/*.h'
