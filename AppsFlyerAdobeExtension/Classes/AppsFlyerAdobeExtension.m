@@ -10,7 +10,7 @@
 #import "AppsFlyerAttribution.h"
 #import <objc/message.h>
 
-#define kAppsFlyerAdobeExtensionVersion @"6.17.7"
+#define kAppsFlyerAdobeExtensionVersion @"6.17.8"
 
 static AppsFlyerAdobeExtension *__sharedInstance = nil;
 static void (^__completionHandler)(NSDictionary*) = nil;
